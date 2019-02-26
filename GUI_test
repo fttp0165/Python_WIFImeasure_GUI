@@ -1,0 +1,84 @@
+from tkinter import *
+
+
+def processOK():
+	print("OK button is clicked")
+
+def processCancel():
+	print("Cancel button is clicked")
+	
+def CleanSelectRate():
+	rate_MCS0_check.deselect()
+	rate_MCS1_check.deselect()
+	rate_MCS2_check.deselect()
+	rate_MCS3_check.deselect()
+	rate_MCS4_check.deselect()
+	rate_MCS5_check.deselect()
+	rate_MCS6_check.deselect()
+	rate_MCS7_check.deselect()
+	
+def SelectAllRate():
+	rate_MCS0_check.select()
+	rate_MCS1_check.select()
+	rate_MCS2_check.select()
+	rate_MCS3_check.select()
+	rate_MCS4_check.select()
+	rate_MCS5_check.select()
+	rate_MCS6_check.select()
+	rate_MCS7_check.select()	
+	
+
+window = Tk()
+
+
+
+btOK = Button(window,text = "OK",fg="red",command=processOK)
+btCancel = Button(window,text = "Cancel",bg="yellow",command = processCancel)
+
+btOK.pack()
+btCancel.pack()
+
+
+
+#-------------------Rate-----------------------
+labelframe_Rate=LabelFrame(window,text="Rate")
+labelframe_Rate.pack() #fill="both", expand="yes"
+
+btClean = Button(labelframe_Rate,text = "Clean_rate",fg="red",command=CleanSelectRate)
+btSelect_All_rate = Button(labelframe_Rate,text = "All_rate",fg="red",command=SelectAllRate)
+
+
+left = Label(labelframe_Rate, text="11n")
+left.pack()
+var0=IntVar()
+var1=IntVar()
+var2=IntVar()
+var3=IntVar()
+var4=IntVar()
+var5=IntVar()
+var6=IntVar()
+var7=IntVar()
+
+rate_MCS0_check=Checkbutton(labelframe_Rate,text = "MCS0",fg="red",variable=var0,onvalue = 1, offvalue = 0,padx=-200,pady=0)
+
+
+rate_MCS1_check=Checkbutton(labelframe_Rate,text = "MCS1",fg="red",variable=var1,onvalue = 1, offvalue =
+0,padx=100,pady=-10)
+rate_MCS2_check=Checkbutton(labelframe_Rate,text = "MCS2",fg="red",variable=var2,onvalue = 1, offvalue = 0,padx=100,pady=-20)
+rate_MCS3_check=Checkbutton(labelframe_Rate,text = "MCS3",fg="red",variable=var3,onvalue = 1, offvalue = 0)
+rate_MCS4_check=Checkbutton(labelframe_Rate,text = "MCS4",fg="red",variable=var4,onvalue = 1, offvalue = 0)
+rate_MCS5_check=Checkbutton(labelframe_Rate,text = "MCS5",fg="red",variable=var5,onvalue = 1, offvalue = 0)
+rate_MCS6_check=Checkbutton(labelframe_Rate,text = "MCS6",fg="red",variable=var6,onvalue = 1, offvalue = 0)
+rate_MCS7_check=Checkbutton(labelframe_Rate,text = "MCS7",fg="red",variable=var7,onvalue = 1, offvalue = 0)
+rate_MCS0_check.pack()
+rate_MCS1_check.pack()
+rate_MCS2_check.pack()
+rate_MCS3_check.pack()
+rate_MCS4_check.pack()
+rate_MCS5_check.pack()
+rate_MCS6_check.pack()
+rate_MCS7_check.pack()
+btSelect_All_rate.pack()
+btClean.pack()
+#-----------------------------------------------
+window.mainloop()
