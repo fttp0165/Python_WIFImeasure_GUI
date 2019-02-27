@@ -1,84 +1,150 @@
 from tkinter import *
 
+from tkinter import ttk
 
-def processOK():
-	print("OK button is clicked")
-
-def processCancel():
-	print("Cancel button is clicked")
-	
-def CleanSelectRate():
-	rate_MCS0_check.deselect()
-	rate_MCS1_check.deselect()
-	rate_MCS2_check.deselect()
-	rate_MCS3_check.deselect()
-	rate_MCS4_check.deselect()
-	rate_MCS5_check.deselect()
-	rate_MCS6_check.deselect()
-	rate_MCS7_check.deselect()
-	
-def SelectAllRate():
-	rate_MCS0_check.select()
-	rate_MCS1_check.select()
-	rate_MCS2_check.select()
-	rate_MCS3_check.select()
-	rate_MCS4_check.select()
-	rate_MCS5_check.select()
-	rate_MCS6_check.select()
-	rate_MCS7_check.select()	
-	
-
-window = Tk()
-
-
-
-btOK = Button(window,text = "OK",fg="red",command=processOK)
-btCancel = Button(window,text = "Cancel",bg="yellow",command = processCancel)
-
-btOK.pack()
-btCancel.pack()
-
-
-
-#-------------------Rate-----------------------
-labelframe_Rate=LabelFrame(window,text="Rate")
-labelframe_Rate.pack() #fill="both", expand="yes"
-
-btClean = Button(labelframe_Rate,text = "Clean_rate",fg="red",command=CleanSelectRate)
-btSelect_All_rate = Button(labelframe_Rate,text = "All_rate",fg="red",command=SelectAllRate)
-
-
-left = Label(labelframe_Rate, text="11n")
-left.pack()
-var0=IntVar()
-var1=IntVar()
-var2=IntVar()
-var3=IntVar()
-var4=IntVar()
-var5=IntVar()
-var6=IntVar()
-var7=IntVar()
-
-rate_MCS0_check=Checkbutton(labelframe_Rate,text = "MCS0",fg="red",variable=var0,onvalue = 1, offvalue = 0,padx=-200,pady=0)
-
-
-rate_MCS1_check=Checkbutton(labelframe_Rate,text = "MCS1",fg="red",variable=var1,onvalue = 1, offvalue =
-0,padx=100,pady=-10)
-rate_MCS2_check=Checkbutton(labelframe_Rate,text = "MCS2",fg="red",variable=var2,onvalue = 1, offvalue = 0,padx=100,pady=-20)
-rate_MCS3_check=Checkbutton(labelframe_Rate,text = "MCS3",fg="red",variable=var3,onvalue = 1, offvalue = 0)
-rate_MCS4_check=Checkbutton(labelframe_Rate,text = "MCS4",fg="red",variable=var4,onvalue = 1, offvalue = 0)
-rate_MCS5_check=Checkbutton(labelframe_Rate,text = "MCS5",fg="red",variable=var5,onvalue = 1, offvalue = 0)
-rate_MCS6_check=Checkbutton(labelframe_Rate,text = "MCS6",fg="red",variable=var6,onvalue = 1, offvalue = 0)
-rate_MCS7_check=Checkbutton(labelframe_Rate,text = "MCS7",fg="red",variable=var7,onvalue = 1, offvalue = 0)
-rate_MCS0_check.pack()
-rate_MCS1_check.pack()
-rate_MCS2_check.pack()
-rate_MCS3_check.pack()
-rate_MCS4_check.pack()
-rate_MCS5_check.pack()
-rate_MCS6_check.pack()
-rate_MCS7_check.pack()
-btSelect_All_rate.pack()
-btClean.pack()
-#-----------------------------------------------
-window.mainloop()
+class Processmain:
+    def __init__(self):
+        win=Tk()
+        win.title("WIFI-Measuer")
+        win.geometry("480x340")
+  
+  
+#------------tab建立-------------------------      
+        tabControl =ttk.Notebook(win)
+        Rate =Frame(tabControl)    
+        Mode =Frame(tabControl)       
+        tabControl.add(Rate,text="Rate")
+        tabControl.add(Mode,text="Mode")
+        tabControl.pack(fill="both", expand="yes")
+        
+        
+#-----------frame 建立-------------------------    
+        labelframe_Rate=LabelFrame(Rate,text="Rate")
+        labelframe_Rate.pack(fill="both", expand="yes") #fill="both", expand="yes"
+        labelframe_11b=LabelFrame(labelframe_Rate,text="11b")
+        labelframe_11g=LabelFrame(labelframe_Rate,text="11g")
+        labelframe_11n=LabelFrame(labelframe_Rate,text="11n")
+        labelframe_11n40=LabelFrame(labelframe_Rate,text="11n40")
+        labelframe_Rate.pack(fill="both", expand="yes") 
+        labelframe_11b.place(x=10,y=0)
+        labelframe_11g.place(x=100,y=0)
+        labelframe_11n.place(x=200,y=0)
+        labelframe_11n40.place(x=300,y=0)
+        
+        
+ #----------------------11b Rate-----------------------------------     
+        var11b1M=IntVar()
+        var11b2M=IntVar()
+        var11b5_5M=IntVar()
+        var11b11M=IntVar()
+                
+        rate_1M_check=Checkbutton(labelframe_11b,text = "1M",fg="red",variable=var11b1M,onvalue = 1, offvalue = 0)
+        rate_2M_check=Checkbutton(labelframe_11b,text = "2M",fg="red",variable=var11b2M,onvalue = 1, offvalue = 0)
+        rate_5_5_check=Checkbutton(labelframe_11b,text = "5.5M",fg="red",variable=var11b5_5M,onvalue = 1, offvalue = 0)
+        rate_11M_check=Checkbutton(labelframe_11b,text = "11M",fg="red",variable=var11b11M,onvalue = 1, offvalue = 0)
+        
+        rate_1M_check.pack()
+        rate_2M_check.pack()
+        rate_5_5_check.pack()
+        rate_11M_check.pack()
+        
+#----------------------11g Rate-----------------------------------       
+        var11g6M=IntVar()
+        var11g9M=IntVar()
+        var11g12M=IntVar()
+        var11g18M=IntVar()
+        var11g24M=IntVar()
+        var11g36M=IntVar()
+        var11g48M=IntVar()
+        var11g54M=IntVar()
+        
+        rate_6M_check=Checkbutton(labelframe_11g,text = "6M",fg="red",variable=var11g6M,onvalue = 1, offvalue = 0)
+        rate_9M_check=Checkbutton(labelframe_11g,text = "9M",fg="red",variable=var11g9M,onvalue = 1, offvalue = 0)
+        rate_12_check=Checkbutton(labelframe_11g,text = "12M",fg="red",variable=var11g12M,onvalue = 1, offvalue = 0)
+        rate_18M_check=Checkbutton(labelframe_11g,text = "18M",fg="red",variable=var11g18M,onvalue = 1, offvalue = 0)
+        rate_24M_check=Checkbutton(labelframe_11g,text = "24M",fg="red",variable=var11g24M,onvalue = 1, offvalue = 0)
+        rate_36M_check=Checkbutton(labelframe_11g,text = "36M",fg="red",variable=var11g36M,onvalue = 1, offvalue = 0)
+        rate_48M_check=Checkbutton(labelframe_11g,text = "48M",fg="red",variable=var11g48M,onvalue = 1, offvalue = 0)
+        rate_54M_check=Checkbutton(labelframe_11g,text = "54M",fg="red",variable=var11g54M,onvalue = 1, offvalue = 0)
+        
+        rate_6M_check.pack()
+        rate_9M_check.pack()
+        rate_12_check.pack()
+        rate_18M_check.pack()
+        rate_24M_check.pack()
+        rate_36M_check.pack()
+        rate_48M_check.pack()
+        rate_54M_check.pack()
+        
+        
+ #----------------------11n Rate-----------------------------------         
+    
+        var11n20MCS0=IntVar()
+        var11n20MCS1=IntVar()
+        var11n20MCS2=IntVar()
+        var11n20MCS3=IntVar()
+        var11n20MCS4=IntVar()
+        var11n20MCS5=IntVar()
+        var11n20MCS6=IntVar()
+        var11n20MCS7=IntVar()
+        
+        rate_MCS0_check=Checkbutton(labelframe_11n,text = "MCS0",fg="red",variable=var11n20MCS0,onvalue = 1, offvalue = 0)
+        rate_MCS1_check=Checkbutton(labelframe_11n,text = "MCS2",fg="red",variable=var11n20MCS1,onvalue = 1, offvalue = 0)
+        rate_MCS2_check=Checkbutton(labelframe_11n,text = "MCS2",fg="red",variable=var11n20MCS2,onvalue = 1, offvalue = 0)
+        rate_MCS3_check=Checkbutton(labelframe_11n,text = "MCS3",fg="red",variable=var11n20MCS3,onvalue = 1, offvalue = 0)
+        rate_MCS4_check=Checkbutton(labelframe_11n,text = "MCS4",fg="red",variable=var11n20MCS4,onvalue = 1, offvalue = 0)
+        rate_MCS5_check=Checkbutton(labelframe_11n,text = "MCS5",fg="red",variable=var11n20MCS5,onvalue = 1, offvalue = 0)
+        rate_MCS6_check=Checkbutton(labelframe_11n,text = "MCS6",fg="red",variable=var11n20MCS6,onvalue = 1, offvalue = 0)
+        rate_MCS7_check=Checkbutton(labelframe_11n,text = "MCS7",fg="red",variable=var11n20MCS7,onvalue = 1, offvalue = 0)
+        
+        rate_MCS0_check.pack()
+        rate_MCS1_check.pack()
+        rate_MCS2_check.pack()
+        rate_MCS3_check.pack()
+        rate_MCS4_check.pack()
+        rate_MCS5_check.pack()
+        rate_MCS6_check.pack()
+        rate_MCS7_check.pack()
+        
+    
+        
+        
+#----------------------11n40 Rate-----------------------------------        
+        var11n40MCS0=IntVar()
+        var11n40MCS1=IntVar()
+        var11n40MCS2=IntVar()
+        var11n40MCS3=IntVar()
+        var11n40MCS4=IntVar()
+        var11n40MCS5=IntVar()
+        var11n40MCS6=IntVar()
+        var11n40MCS7=IntVar()
+              
+        rate_40M_MCS0_check=Checkbutton(labelframe_11n40,text = "MCS0",fg="red",variable=var11n40MCS0,onvalue = 1, offvalue = 0)
+        rate_40M_MCS1_check=Checkbutton(labelframe_11n40,text = "MCS2",fg="red",variable=var11n40MCS1,onvalue = 1, offvalue = 0)
+        rate_40M_MCS2_check=Checkbutton(labelframe_11n40,text = "MCS2",fg="red",variable=var11n40MCS2,onvalue = 1, offvalue = 0)
+        rate_40M_MCS3_check=Checkbutton(labelframe_11n40,text = "MCS3",fg="red",variable=var11n40MCS3,onvalue = 1, offvalue = 0)
+        rate_40M_MCS4_check=Checkbutton(labelframe_11n40,text = "MCS4",fg="red",variable=var11n40MCS4,onvalue = 1, offvalue = 0)
+        rate_40M_MCS5_check=Checkbutton(labelframe_11n40,text = "MCS5",fg="red",variable=var11n40MCS5,onvalue = 1, offvalue = 0)
+        rate_40M_MCS6_check=Checkbutton(labelframe_11n40,text = "MCS6",fg="red",variable=var11n40MCS6,onvalue = 1, offvalue = 0)
+        rate_40M_MCS7_check=Checkbutton(labelframe_11n40,text = "MCS7",fg="red",variable=var11n40MCS7,onvalue = 1, offvalue = 0)
+        
+        rate_40M_MCS0_check.pack()
+        rate_40M_MCS1_check.pack()
+        rate_40M_MCS2_check.pack()
+        rate_40M_MCS3_check.pack()
+        rate_40M_MCS4_check.pack()
+        rate_40M_MCS5_check.pack()
+        rate_40M_MCS6_check.pack()
+        rate_40M_MCS7_check.pack()
+        
+       
+        
+       
+                 
+        win.mainloop()
+        
+        
+        
+        
+Processmain()
+        
